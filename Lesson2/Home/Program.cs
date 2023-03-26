@@ -14,14 +14,12 @@ if (success2 && success1)
     if (operation == "+")
     {
         answer = num1 + num2;
-
     }
     else
 
         if (operation == "-")
     {
         answer = num1 - num2;
-
     }
     else
 
