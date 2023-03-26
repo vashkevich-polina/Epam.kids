@@ -16,22 +16,18 @@ if (success2 && success1)
         answer = num1 + num2;
     }
     else
-
         if (operation == "-")
     {
         answer = num1 - num2;
     }
     else
-
             if (operation == "*")
     {
         answer = num1 * num2;
-
     }
     else
     {
-        answer = num1 / num2;
-
+        answer = num1 / num2;+
     }
 
     Console.WriteLine(" Answer = " + answer);
