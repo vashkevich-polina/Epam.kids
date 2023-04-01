@@ -8,7 +8,7 @@
         "preLaunchTask": "build",
         "program": "${workspaceFolder}/Lesson3/Home/bin/Debug/net7.0/Home.dll",
         "args": [],
-        "cwd": "${workspaceFolder}",
+        "cwd": "${workspaceFolder}/Lesson3/Home",
         "stopAtEntry": false,
         "console": "integratedTerminal"
     },
