@@ -1,4 +1,4 @@
-﻿Console.WriteLine("Enter two numbers less than a million");
+﻿Console.WriteLine("Enter two numbers less than a billion");
 
 string number1 = Console.ReadLine();
 bool success1 = int.TryParse(number1, out int num1);
