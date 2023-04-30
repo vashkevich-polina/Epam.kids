@@ -1,8 +1,8 @@
 class Player
 {
-    public int Money;
-    public int CorrectAnswers;
-    public string Name;
+    public int Money{get;set;}
+    public int CorrectAnswers{get;set;}
+    public string Name{get;set;}
     
     public Player(string name, int money, int correctAnswers)
     {

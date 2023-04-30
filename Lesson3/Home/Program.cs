@@ -8,12 +8,15 @@ bool success2 = int.TryParse(number2, out int num2);
 
 if (success2 && success1 && num1 > 0 && num2 > 0)
 {
-    int[] first = new int[10];
+    
+
+     int[] first = new int[10];
     for (int i = first.Length - 1; i >= 0; i--)
     {
         first[i] = num1 % 10;
         num1 = num1 / 10;
     }
+
     int[] second = new int[10];
     for (int i = second.Length - 1; i >= 0; i--)
     {
@@ -36,3 +39,4 @@ else
 {
     Console.WriteLine(" Invalid input");
 }
+

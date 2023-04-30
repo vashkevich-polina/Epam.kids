@@ -1,5 +1,27 @@
 ﻿
 Console.WriteLine("Добро пожаловать в игру \"Смешарики\"!");
+Console.WriteLine("Начнём игру сначала или продолжим? 1 - Начать сначала, 2 - Продолжить");
+string answer = Console.ReadLine();
+if (int.TryParse(answer, out int answerNumber) && answerNumber <= 2 && answerNumber >= 1)
+{
+    if (answerNumber == 1)
+    {
+         Game game = StartNewGame();
+        StartGame(game);
+    }
+    else
+    {
+        Game game = Game.GameLoad();
+        StartGame(game);
+    }
+}
+else
+{
+    Console.WriteLine("Некорректный ввод");
+}
+
+Game StartNewGame()
+{
 Console.WriteLine("Введите имя игрока:");
 var playerName = Console.ReadLine();
 var player = new Player(playerName, money: 10, 0);
@@ -12,17 +34,18 @@ var questions = new[] {
     new Question("Кто собрал коллекцию фантиков?", new [] {"Ёжик", "Крош", "Пин", "Совунья"}, 1)
 };
 
-var game = new Game(questions, player);
+var game = new Game(questions, player, questionNumber: 0);
+return game;
 StartGame(game);
-
+}
 
 void StartGame(Game game)
 {
     bool continuePlaying = true;
-    int questionNumber = 0;
-    while (questionNumber < game.Questions.Length && continuePlaying)
+
+    while (game.QuestionNumber < game.Questions.Length && continuePlaying)
     {
-        var question = game.Questions[questionNumber];
+        var question = game.Questions[game.QuestionNumber];
         Console.WriteLine(question.Text);
         for (int i = 0; i < question.Answers.Length; i++)
         {
@@ -42,9 +65,13 @@ void StartGame(Game game)
             Console.WriteLine("Неправильно!");
         }
 
-        questionNumber++;
-        if (questionNumber < game.Questions.Length)
+        game.QuestionNumber++;
+        if (game.QuestionNumber < game.Questions.Length)
             continuePlaying = GetContinuePlaying();
+        if (!continuePlaying)
+        {
+            game.SaveGame();
+        }
     }
     Console.WriteLine($"Игра окончена. Вы заработали {game.Player.Money}. Правильных ответов: {game.Player.CorrectAnswers}");
 }
@@ -92,3 +119,4 @@ bool GetContinuePlaying()
         return false;
     }
 }
+
